@@ -2,19 +2,30 @@
 class home extends Controllers {
     public function sayHi()
     {
+        //Database
         $model = $this->callModel('tryConnect');
-
         $array = $model->list();
 
-        $this->structure($array);
-
-        $this->callView('master1', [
-            'arr' => $array
+        //View
+        $this->callView('login', [
+            'arr' => $array,
+            'css_file' => '/facebook_mini/public/css/login.css',
+            'title' => 'Login Form',
         ]);
     }
     public function xyz()
     {
-        echo 'HOME - xyz';
+        //Database
+        $model = $this->callModel('tryConnect');
+        $array = $model->list();
+
+        //Show Data of Fetched Database
+        $this->structure($array);
+
+        //View the Data
+        $this->callView('login', [
+            'arr' => $array
+        ]);
     }
     
     public function sum($arr)
